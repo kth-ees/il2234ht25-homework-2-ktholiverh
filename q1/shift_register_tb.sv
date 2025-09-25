@@ -59,7 +59,8 @@ end
 
 // monitor setup
 initial begin
-    
+    $monitor("Time=%0t | clk=%b rst=%b s_p=%b e=%b s_in=%b p_in=%b p_out=%b s_out=%b",
+        $time, clk, rst_n, serial_parallel, load_enable, serial_in, parallel_in, parallel_out, serial_out);
 end
 
 endmodule
