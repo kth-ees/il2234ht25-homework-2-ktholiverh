@@ -38,16 +38,17 @@ initial begin
 
     // test serial loading, after N clock cycles, parallel_out should be '1
     serial_in = 1'b1;
-    for (i = 0; i < N; i++) begin
+    for (int i = 0; i < N-1; i++) begin
         #10;
     end
+    serial_in = 1'b0;
 
     //test reset, parallel_out should be '0
     #10 rst_n = 1'b0;
     #10 rst_n = 1'b1;
 
     // test parallel loading, parallel_out should be '1
-    #10 parallel_in = '1;
+    #10 serial_parallel = 1'b1; parallel_in = '1;
 
     // test enable, parallel_out should be '1
     #10 load_enable = 1'b0;
